@@ -2,7 +2,7 @@
   "name": "laravel-js-helpers",
   "version": "1.0.0",
   "description": "Laravel helpers within javascript (data_get, data_set, data_fill, collect)",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "npm run transpile",
     "transpile": "babel src --quiet --out-dir dist",
