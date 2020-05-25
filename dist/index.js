@@ -80,7 +80,7 @@ module.exports.blank = function blank(value) {
 /**
  * Return the default value of the given value.
  *
- * @param  $value
+ * @param  value
  * @return
  */
 
@@ -296,15 +296,4 @@ module.exports.transform = function transform(value, callback) {
   }
 
   return original;
-};
-
-module.exports["default"] = {
-  value: value,
-  blank: blank,
-  filled: filled,
-  collect: collect,
-  data_get: data_get,
-  data_set: data_set,
-  data_fill: data_fill,
-  transform: transform
 };
