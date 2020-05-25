@@ -1,12 +1,22 @@
 {
   "name": "laravel-js-helpers",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Laravel helpers within javascript (data_get, data_set, data_fill, collect)",
   "main": "dist/index.js",
   "scripts": {
-    "build": "npm run transpile",
+    "all": "npm run build && npm test",
+    "pretest": "npm run transpile",
+    "test": "mocha test/tests.js",
     "transpile": "babel src --quiet --out-dir dist",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "readme": "node bundler/bundle.js",
+    "bundle": "webpack-cli dist/index.js --output build/index.js --mode development --output-library laravelJsHelpers",
+    "uglify": "uglifyjs build/index.js --compress --mangle --output build/index.min.js",
+    "build": "npm run transpile && npm run bundle && npm run uglify && npm run readme",
+    "coverage": "npm run transpile && nyc mocha test/tests.js",
+    "reporter": "nyc report --reporter=html",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "prepublishOnly": "npm run all"
   },
   "repository": {
     "type": "git",
@@ -58,6 +68,15 @@
     "@babel/core": "^7.2.2",
     "@babel/polyfill": "^7.8.3",
     "@babel/preset-env": "^7.9.6",
-    "collect.js": "^4.25.0"
+    "benchmark": "^2.1.0",
+    "hoax.js": "^1.0.0",
+    "nyc": "^11.0.2",
+    "chai": "^4.2.0",
+    "collect.js": "^4.25.0",
+    "locutus": "^2.0.11",
+    "mocha": "^3.5.2",
+    "uglify-js": "^3.2.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
   }
 }

@@ -34,11 +34,11 @@ var _require = require('collect.js'),
  * Create a collection from the given value.
  *
  * @param  value
- * @return Collection
+ * @return mixed
  */
 
 
-module.exports.collect = function collect() {
+var collect = function collect() {
   var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
   return new Collection(value);
 };
@@ -46,11 +46,11 @@ module.exports.collect = function collect() {
  * Determine if the given value is "blank".
  *
  * @param  value
- * @return bool
+ * @return boolean
  */
 
 
-module.exports.blank = function blank(value) {
+var blank = function blank(value) {
   if (typeof value === 'undefined') {
     return true;
   }
@@ -85,7 +85,7 @@ module.exports.blank = function blank(value) {
  */
 
 
-module.exports.value = function value(value) {
+var value = function value(value) {
   return typeof value === 'function' ? value() : value;
 };
 /**
@@ -96,7 +96,7 @@ module.exports.value = function value(value) {
  */
 
 
-module.exports.filled = function filled(value) {
+var filled = function filled(value) {
   return !blank(value);
 };
 /**
@@ -109,7 +109,7 @@ module.exports.filled = function filled(value) {
  */
 
 
-module.exports.data_get = function data_get(target, path, fallback) {
+var data_get = function data_get(target, path, fallback) {
   var segments = Array.isArray(path) ? path : path.split('.');
 
   var _segments = _slicedToArray(segments, 1),
@@ -180,7 +180,7 @@ module.exports.data_get = function data_get(target, path, fallback) {
  */
 
 
-module.exports.data_fill = function data_fill(target, key, value) {
+var data_fill = function data_fill(target, key, value) {
   return data_set(target, key, value, false);
 };
 /**
@@ -194,7 +194,7 @@ module.exports.data_fill = function data_fill(target, key, value) {
  */
 
 
-module.exports.data_set = function data_set(target, path, value) {
+var data_set = function data_set(target, path, value) {
   var force = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : true;
   var segments = Array.isArray(path) ? path : path.split('.');
 
@@ -275,12 +275,12 @@ module.exports.data_set = function data_set(target, path, value) {
  *
  * @param  value
  * @param  callback
- * @param  default
- * @return mixed|null
+ * @param  original
+ * @return mixed|null|void
  */
 
 
-module.exports.transform = function transform(value, callback) {
+var transform = function transform(value, callback) {
   var original = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
 
   if (typeof callback !== 'function') {
@@ -297,3 +297,22 @@ module.exports.transform = function transform(value, callback) {
 
   return original;
 };
+
+module.exports["default"] = {
+  blank: blank,
+  value: value,
+  filled: filled,
+  collect: collect,
+  data_get: data_get,
+  data_set: data_set,
+  transform: transform,
+  data_fill: data_fill
+};
+module.exports.blank = blank;
+module.exports.value = value;
+module.exports.filled = filled;
+module.exports.collect = collect;
+module.exports.data_get = data_get;
+module.exports.data_set = data_set;
+module.exports.transform = transform;
+module.exports.data_fill = data_fill;
