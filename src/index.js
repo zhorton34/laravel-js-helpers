@@ -3,15 +3,13 @@
 
 const { Collection } = require('collect.js');
 
-
-
 /**
  * Create a collection from the given value.
  *
  * @param  value
- * @return Collection
+ * @return mixed
  */
-module.exports.collect = function collect(value = null) {
+const collect = function collect(value = null) {
     return new Collection(value);
 };
 
@@ -19,9 +17,9 @@ module.exports.collect = function collect(value = null) {
  * Determine if the given value is "blank".
  *
  * @param  value
- * @return bool
+ * @return boolean
  */
-module.exports.blank = function blank(value) {
+const blank = function blank(value) {
 
     if (typeof value === 'undefined') {
     	return true;
@@ -30,7 +28,7 @@ module.exports.blank = function blank(value) {
 	if (value === null || value.trim() === '') {
 		return true;
 	}
-	
+
 	if (Array.isArray(value)) {
 	   return value.length === 0;
 	}
@@ -49,7 +47,7 @@ module.exports.blank = function blank(value) {
 
     return true;
 
-}
+};
 
 /**
  * Return the default value of the given value.
@@ -57,10 +55,10 @@ module.exports.blank = function blank(value) {
  * @param  value
  * @return
  */
-module.exports.value = function value(value)
+const value = function value(value)
 {
 	return typeof value === 'function' ? value() : value;
-}
+};
 
 /**
  * Determine if a value is "filled".
@@ -68,10 +66,10 @@ module.exports.value = function value(value)
  * @param  value
  * @return bool
  */
-module.exports.filled = function filled(value)
+const filled = function filled(value)
 {
     return ! blank(value);
-}
+};
 
 /**
  * Set an item on an array or object using dot notation.
@@ -81,7 +79,7 @@ module.exports.filled = function filled(value)
  * @param  fallback
  * @return *
  */
-module.exports.data_get = function data_get(target, path, fallback) {
+const data_get = function data_get(target, path, fallback) {
 	let segments = Array.isArray(path) ? path : path.split('.');
 	let [segment] = segments;
 
@@ -154,7 +152,7 @@ module.exports.data_get = function data_get(target, path, fallback) {
  * @param  value
  * @return mixed
  */
-module.exports.data_fill = function data_fill(target, key, value) {
+const data_fill = function data_fill(target, key, value) {
 	return data_set(target, key, value, false);
 };
 
@@ -167,7 +165,7 @@ module.exports.data_fill = function data_fill(target, key, value) {
  * @param  force
  * @return *
  */
-module.exports.data_set = function data_set(target, path, value, force = true) {
+const data_set = function data_set(target, path, value, force = true) {
 	let segments = Array.isArray(path) ? path : path.split('.');
 	let [segment] = segments;
 
@@ -257,10 +255,10 @@ module.exports.data_set = function data_set(target, path, value, force = true) {
      *
      * @param  value
      * @param  callback
-     * @param  default
-     * @return mixed|null
+     * @param  original
+     * @return mixed|null|void
      */
-module.exports.transform = function transform(value, callback, original = null) {
+const transform = function transform(value, callback, original = null) {
     if (typeof callback !== 'function') {
     	return console.error("transform's 2nd parameter needs to be a callback");
     }
@@ -275,3 +273,23 @@ module.exports.transform = function transform(value, callback, original = null) 
 
     return original;
 };
+
+module.exports.default = {
+	blank,
+	value,
+	filled,
+	collect,
+	data_get,
+	data_set,
+	transform,
+	data_fill
+};
+
+module.exports.blank = blank;
+module.exports.value = value;
+module.exports.filled = filled;
+module.exports.collect = collect;
+module.exports.data_get = data_get;
+module.exports.data_set = data_set;
+module.exports.transform = transform;
+module.exports.data_fill = data_fill;

@@ -16,7 +16,6 @@
     "docs:build": "vuepress build docs",
     "prepublishOnly": "npm run all"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zhorton34/laravel-js-helpers.git"
@@ -67,6 +66,7 @@
     "@babel/core": "^7.2.2",
     "@babel/polyfill": "^7.8.3",
     "@babel/preset-env": "^7.9.6",
+    "chai": "^4.2.0",
     "collect.js": "^4.25.0",
     "locutus": "^2.0.11",
     "mocha": "^3.5.2",

@@ -24,7 +24,7 @@ Object.entries(
   tests.forEach(file => {
       describe(file.replace('.test.js', '()'), () => {
 
-      require(path.join(__dirname, directory, file))(it, expect, payload());
+      require(path.join(__dirname, directory, file))(it, expect);
     });
   }
   )
