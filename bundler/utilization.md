@@ -1,84 +1,8 @@
-
-# Laravel JS Helpers
-
 ---
 
-> _"Laravel Helper Methods In Javascript"_
-
-
----
-
-### Install
+## Utilization
 
 ---
-
-**Npm**
-```
-npm install laravel-js-helpers --save
-```
-
-**Yarn**
-```
-yarn add laravel-js-helpers
-```
-
-**CDN**
-```
-https://unpkg.com/laravel-js-helpers@latest/build/index.js
-```
-
----
-
-### Available Laravel Methods
-
----
-
-- [Data Get](https://laravel.com/docs/7.x/helpers#method-data-get)
-- [Data Set](https://laravel.com/docs/7.x/helpers#method-data-set)
-- [Data Fill](https://laravel.com/docs/7.x/helpers#method-data-fill)
-- [Blank](https://laravel.com/docs/7.x/helpers#method-blank)
-- [Filled](https://laravel.com/docs/7.x/helpers#method-filled)
-- [Transform](https://laravel.com/docs/7.x/helpers#method-transform)
-- [Value](https://laravel.com/docs/7.x/helpers#method-value)
-- [Collect (@See Collect.js Package)](https://laravel.com/docs/7.x/helpers#method-collect)
-- **NOTE** _collect_ method uses [Collect.js](https://github.com/ecrmnn/collect.js/)
-
----
-
-### Quick Overview
-
----
-
-```js
-const { data_get, data_set, data_fill } = require('laravel-js-helpers');
-
-
-let family = {
-	members: {
-		brother: {
-			age: 17,
-			name: 'drew',
-			hobbies: ['football', '"chillin"', 'video games']
-		},
-		sister: {
-			age: 25,
-			name: 'ash',
-			hobbies: ['mothering babies', 'fitness', 'nutrition', '']
-		},
-		mother: {
-			name: 'amy',
-			age: 'thats not polite',
-			hobbies: ['cleaning', 'nursing', 'hiking']
-		},
-		father: {
-			age: 50,
-			name: 'jon',
-			hobbies: ['reading', 'sports', 'talking for seemingly ever', 'providing useful insights']
-		},
-	}
-}
-
-```
 
 ---
 
@@ -86,11 +10,24 @@ let family = {
 
 ---
 
+**Data Get Simple**
 ```js
-data_get(family, 'family.members.brother.name'); // "drew"
+data_get(family, 'family.members.brother.name');
+```
+**Data Get Output**
+```
+"drew"
+```
 
-/** Wildcard Get **/
-data_get(family, 'family.members.*.age'); // [17, 25, 'thats not polite', 50];
+
+**Data Get Wildcard**__("*")__
+```js
+data_get(family, 'family.members.*.age'); 
+```
+
+**Data Get Wildcard Output**
+```
+[17, 25, 'thats not polite', 50];
 ```
 
 ---
@@ -99,13 +36,18 @@ data_get(family, 'family.members.*.age'); // [17, 25, 'thats not polite', 50];
 
 ---
 
+**Data Set Simple**
 ```js
 data_set(family, 'members.brother.age', 21);
 data_set(family, 'members.brother.name', 'Everett');
+```
 
-/** Wildcard Set **/
+**Data Set Wildcard**__("*")__
+```js
 data_set(family, 'members.*.last_name', 'Smith');
 ```
+
+**Data Set Output**
 ```
 {
 	members: {
@@ -142,16 +84,21 @@ data_set(family, 'members.*.last_name', 'Smith');
 **Data Fill**
 
 ---
+
+**Data Fill Simple**
 ```js
 data_fill(family, 'members.brother.age', 23); // wont do anything
 data_fill(family, 'members.brother.name', 'Zak'); // wont do anything
 data_fill(family, 'members.brother.birthday', 'April 22'); // will do something
+```
 
-/** Wildcard Fill **/
+**Data Fill Wildcard**__("*")__
+```js 
 data_fill(family, 'members.*.last_name', 'Horton'); // wont do anything
 data_fill(family, 'members.*.nickname', 'Hortonion'); // will do something
-
 ```
+
+**Data Fill Output**
 ```
 {
 	members: {
@@ -186,7 +133,9 @@ data_fill(family, 'members.*.nickname', 'Hortonion'); // will do something
 		},
 	}
 }
-
 ```
+
+
+
 
 
