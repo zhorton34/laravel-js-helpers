@@ -1,0 +1,52 @@
+{
+  "name": "laravel-js-helpers",
+  "version": "1.0.0",
+  "description": "Laravel helpers within javascript (data_get, data_set, data_fill, collect)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhorton34/laravel-js-helpers.git"
+  },
+  "keywords": [
+    "data",
+    "get",
+    "data",
+    "set",
+    "dot",
+    "notation",
+    "laravel",
+    "wildcard",
+    "data",
+    "get",
+    "wildard",
+    "data",
+    "set",
+    "wilcard",
+    "data",
+    "fill",
+    "laravel",
+    "js",
+    "js",
+    "laravel",
+    "set",
+    "accessor",
+    "dotter",
+    "laravel",
+    "helpers",
+    "js",
+    "collections",
+    "javascript"
+  ],
+  "author": "Zachary Horton",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zhorton34/laravel-js-helpers/issues"
+  },
+  "homepage": "https://github.com/zhorton34/laravel-js-helpers#readme",
+  "devDependencies": {
+    "collect.js": "^4.25.0"
+  }
+}
