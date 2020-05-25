@@ -4,6 +4,8 @@
   "description": "Laravel helpers within javascript (data_get, data_set, data_fill, collect)",
   "main": "index.js",
   "scripts": {
+    "build": "npm run transpile",
+    "transpile": "babel src --quiet --out-dir dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -46,7 +48,16 @@
     "url": "https://github.com/zhorton34/laravel-js-helpers/issues"
   },
   "homepage": "https://github.com/zhorton34/laravel-js-helpers#readme",
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/polyfill": "^7.8.3",
+    "@babel/preset-env": "^7.9.6",
     "collect.js": "^4.25.0"
   }
 }
